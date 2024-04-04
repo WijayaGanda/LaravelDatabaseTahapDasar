@@ -17,12 +17,6 @@ class EmployeeController extends Controller
     {
         $pageTitle = 'Employee List';
 
-        // //sql raw query
-        // $employees = DB::select('
-        // select *, employees.id as employee_id, positions.name as position_name
-        // from employees
-        // left join positions on employees.position_id = positions.id');
-
         // Query Builder
         $employees = DB::table('employees')
         ->select('employees.*', 'employees.id as employee_id', 'positions.name as position_name')
@@ -44,9 +38,6 @@ class EmployeeController extends Controller
     public function create()
     {
         $pageTitle = 'Create Employee';
-
-        // //raw sql query
-        // $positions = DB::select('select * from positions');
 
         // Query Builder
          $positions = DB::table('positions')->get();
@@ -101,14 +92,6 @@ class EmployeeController extends Controller
     public function show(string $id)
     {
         $pageTitle = 'Employee Detail';
-
-        // // RAW SQL QUERY
-        // $employee = collect(DB::select('
-        //     select *, employees.id as employee_id, positions.name as position_name
-        //     from employees
-        //     left join positions on employees.position_id = positions.id
-        //     where employees.id = ?
-        // ', [$id]))->first();
 
         // Query Builder
         $employee = DB::table('employees')
